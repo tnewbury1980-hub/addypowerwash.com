@@ -1,1 +1,556 @@
-https//addypowerwash.github.io/my business-site/''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addy Power Wash | Professional Pressure Washing Services</title>
+  <meta name="description" content="Addy Power Wash offers professional pressure washing services for driveways, decks, siding, and more. See our stunning before and after transformations.">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1a1a2e;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Colours ── */
+    :root {
+      --blue: #0077b6;
+      --blue-dark: #005f8a;
+      --blue-light: #90e0ef;
+      --accent: #f77f00;
+      --accent-dark: #d56a00;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --white: #ffffff;
+    }
+
+    /* ── Navigation ── */
+    .navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem; font-weight: 800; color: var(--blue);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-weight: 600; font-size: 0.95rem; color: var(--dark);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--accent); color: var(--white) !important;
+      padding: 0.5rem 1.2rem; border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); }
+
+    /* Mobile nav */
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; flex-direction: column; position: absolute;
+        top: 100%; left: 0; width: 100%; background: var(--white);
+        padding: 1rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      .nav-links.active { display: flex; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #90e0ef 100%);
+      position: relative; text-align: center; padding: 6rem 2rem 4rem;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900;
+      color: var(--white); margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .hero h1 span { color: #ffd166; }
+    .hero p {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem); color: rgba(255,255,255,0.92);
+      margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.9rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 1.05rem; transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,127,0,0.4); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+    .btn-outline:hover { background: var(--white); color: var(--blue); }
+
+    /* ── Section Base ── */
+    .section { padding: 5rem 2rem; }
+    .section-dark { background: var(--dark); color: var(--white); }
+    .section-light { background: var(--light); }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 0.75rem;
+    }
+    .section-header p { color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .section-dark .section-header p { color: rgba(255,255,255,0.7); }
+    .accent-line {
+      width: 60px; height: 4px; background: var(--accent);
+      border-radius: 2px; margin: 0.75rem auto 0;
+    }
+
+    /* ── Before & After Slider ── */
+    .ba-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+    .ba-card {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      background: var(--white);
+    }
+    .ba-slider {
+      position: relative; width: 100%; aspect-ratio: 16/10;
+      overflow: hidden; cursor: col-resize; user-select: none;
+    }
+    .ba-slider .ba-before,
+    .ba-slider .ba-after {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: var(--white);
+    }
+    /* Driveway */
+    .ba-driveway .ba-before {
+      background: linear-gradient(135deg, #4a4a3a 0%, #6b6b52 30%, #3d3d2e 60%, #555544 100%);
+    }
+    .ba-driveway .ba-after {
+      background: linear-gradient(135deg, #c8c8c0 0%, #d9d9d0 30%, #e8e8e0 60%, #d0d0c8 100%);
+    }
+    /* Deck */
+    .ba-deck .ba-before {
+      background: linear-gradient(135deg, #5c4a3a 0%, #6d5b4a 30%, #4e3c2c 60%, #5a4838 100%);
+    }
+    .ba-deck .ba-after {
+      background: linear-gradient(135deg, #c49a6c 0%, #d4aa7c 30%, #b88a5c 60%, #cca06e 100%);
+    }
+    /* Siding */
+    .ba-siding .ba-before {
+      background: linear-gradient(135deg, #7a8a6a 0%, #8b9b7b 30%, #6a7a5a 60%, #7d8d6d 100%);
+    }
+    .ba-siding .ba-after {
+      background: linear-gradient(135deg, #e8e8e8 0%, #f0f0f0 30%, #e0e0e0 60%, #ececec 100%);
+    }
+
+    .ba-before { clip-path: inset(0 50% 0 0); }
+    .ba-slider .ba-label {
+      position: absolute; top: 12px; padding: 4px 14px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      z-index: 5;
+    }
+    .ba-label-before { left: 12px; background: rgba(220,50,50,0.85); color: #fff; }
+    .ba-label-after { right: 12px; background: rgba(0,180,80,0.85); color: #fff; }
+    .ba-slider .ba-divider {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 4px;
+      background: var(--white); z-index: 4; transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+    .ba-slider .ba-handle {
+      position: absolute; top: 50%; left: 50%; z-index: 5;
+      transform: translate(-50%, -50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--white); border: 3px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      font-size: 1.1rem; color: var(--accent);
+    }
+    .ba-info { padding: 1.5rem; }
+    .ba-info h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--dark); }
+    .ba-info p { color: var(--gray); font-size: 0.95rem; }
+
+    /* ── Services ── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: 14px; padding: 2rem;
+      text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+    .service-icon {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-light), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem; font-size: 1.8rem; color: var(--white);
+    }
+    .service-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .service-card p { color: var(--gray); font-size: 0.95rem; }
+
+    /* ── Why Us ── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .why-card { text-align: center; padding: 1.5rem; }
+    .why-number {
+      font-size: 2.5rem; font-weight: 900; color: var(--accent);
+      line-height: 1;
+    }
+    .why-card h3 { margin: 0.75rem 0 0.5rem; font-size: 1.1rem; color: var(--white); }
+    .why-card p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+    /* ── Testimonials ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--white); border-radius: 14px; padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C'; position: absolute; top: 10px; left: 16px;
+      font-size: 4rem; color: var(--blue-light); line-height: 1; font-family: Georgia, serif;
+    }
+    .stars { color: #f4a940; font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .testimonial-card p { font-style: italic; color: var(--gray); margin-bottom: 1rem; }
+    .testimonial-card .author { font-weight: 700; color: var(--dark); font-style: normal; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue) 0%, #00b4d8 100%);
+      padding: 5rem 2rem; text-align: center; color: var(--white);
+    }
+    .cta-section h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-section .btn-primary { font-size: 1.15rem; padding: 1rem 2.5rem; }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--dark); color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .footer h4 { color: var(--white); margin-bottom: 1rem; font-size: 1.05rem; }
+    .footer p, .footer li { font-size: 0.95rem; line-height: 1.8; }
+    .footer ul { list-style: none; }
+    .footer a { transition: color 0.3s; }
+    .footer a:hover { color: var(--accent); }
+    .footer-bottom {
+      text-align: center; margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem;
+    }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Addy<span>PowerWash</span></div>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Toggle menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#results">Results</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>We Make Your Property <span>Shine Again</span></h1>
+      <p>Professional pressure washing that transforms dirty, stained surfaces into like-new condition. Serving your neighborhood with care, quality, and unbeatable results.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="#results" class="btn btn-outline">See Our Results &#8595;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Section -->
+  <section id="results" class="section section-light">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Before &amp; After Transformations</h2>
+        <p>Drag the slider to reveal the difference professional power washing makes. Real results from real projects.</p>
+        <div class="accent-line"></div>
+      </div>
+      <div class="ba-grid">
+
+        <!-- Card 1: Driveway -->
+        <div class="ba-card fade-in">
+          <div class="ba-slider ba-driveway" data-slider>
+            <div class="ba-after">
+              <span class="ba-label ba-label-after">After</span>
+              Clean &amp; Restored
+            </div>
+            <div class="ba-before">
+              <span class="ba-label ba-label-before">Before</span>
+              Stained &amp; Dirty
+            </div>
+            <div class="ba-divider"></div>
+            <div class="ba-handle">&#8596;</div>
+          </div>
+          <div class="ba-info">
+            <h3>Driveway Cleaning</h3>
+            <p>Years of oil stains, tire marks, and grime removed to reveal the original concrete surface underneath.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Deck -->
+        <div class="ba-card fade-in">
+          <div class="ba-slider ba-deck" data-slider>
+            <div class="ba-after">
+              <span class="ba-label ba-label-after">After</span>
+              Warm &amp; Renewed
+            </div>
+            <div class="ba-before">
+              <span class="ba-label ba-label-before">Before</span>
+              Weathered &amp; Grey
+            </div>
+            <div class="ba-divider"></div>
+            <div class="ba-handle">&#8596;</div>
+          </div>
+          <div class="ba-info">
+            <h3>Deck Restoration</h3>
+            <p>Weathered, grey wood brought back to life with gentle yet effective pressure washing that preserves the grain.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: House Siding -->
+        <div class="ba-card fade-in">
+          <div class="ba-slider ba-siding" data-slider>
+            <div class="ba-after">
+              <span class="ba-label ba-label-after">After</span>
+              Bright &amp; Fresh
+            </div>
+            <div class="ba-before">
+              <span class="ba-label ba-label-before">Before</span>
+              Algae &amp; Mildew
+            </div>
+            <div class="ba-divider"></div>
+            <div class="ba-handle">&#8596;</div>
+          </div>
+          <div class="ba-info">
+            <h3>House Siding Wash</h3>
+            <p>Green algae and mildew buildup stripped away using soft-wash techniques safe for all siding types.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Our Services</h2>
+        <p>From residential homes to commercial properties, we have the equipment and expertise to handle any job.</p>
+        <div class="accent-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">&#127968;</div>
+          <h3>House Washing</h3>
+          <p>Soft-wash techniques that safely remove dirt, mold, and mildew from vinyl, brick, stucco, and wood siding.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">&#128739;</div>
+          <h3>Driveway &amp; Sidewalk</h3>
+          <p>High-pressure surface cleaning that eliminates oil stains, tire marks, rust, and years of built-up grime.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">&#127795;</div>
+          <h3>Deck &amp; Patio</h3>
+          <p>Gentle yet thorough cleaning that restores wood and composite decks without damaging the surface.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">&#9889;</div>
+          <h3>Roof Cleaning</h3>
+          <p>Low-pressure soft washing to remove black streaks, moss, and lichen, extending your roof's lifespan.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">&#128295;</div>
+          <h3>Fence Restoration</h3>
+          <p>Bring your wooden or vinyl fence back to life by removing years of dirt, algae, and discoloration.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">&#127970;</div>
+          <h3>Commercial Properties</h3>
+          <p>Keep your business looking professional with scheduled exterior cleaning for storefronts, parking lots, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why-us" class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Why Choose Addy Power Wash</h2>
+        <p>We're not just another pressure washing company. Here's what sets us apart.</p>
+        <div class="accent-line"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <div class="why-number">500+</div>
+          <h3>Projects Completed</h3>
+          <p>Hundreds of satisfied homeowners and businesses trust us with their properties.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-number">100%</div>
+          <h3>Satisfaction Guaranteed</h3>
+          <p>If you're not happy with our work, we'll come back and make it right at no extra charge.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-number">Eco</div>
+          <h3>Friendly Solutions</h3>
+          <p>We use biodegradable, plant-safe cleaning agents that won't harm your garden or pets.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="why-number">24hr</div>
+          <h3>Quick Turnaround</h3>
+          <p>Most jobs completed within a day. Fast scheduling so you don't have to wait weeks to get started.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="reviews" class="section section-light">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>What Our Customers Say</h2>
+        <p>Don't just take our word for it. Hear from the people who've seen the transformation firsthand.</p>
+        <div class="accent-line"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"My driveway looked brand new after they were done. I couldn't believe the difference! The team was professional, on time, and left everything spotless."</p>
+          <span class="author">— Sarah M.</span>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We had green algae covering our entire house siding. Addy Power Wash removed every bit of it in just a few hours. It looks like a brand new house!"</p>
+          <span class="author">— James R.</span>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Best investment I've made for my home's curb appeal. The deck looks incredible, and they were careful around all of my plants. Highly recommend!"</p>
+          <span class="author">— Michelle T.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2>Ready for a Cleaner Property?</h2>
+      <p>Get your free, no-obligation quote today. We'll assess your property and provide an honest estimate — no hidden fees, no pressure.</p>
+      <a href="mailto:info@addypowerwash.com" class="btn btn-primary">Request Your Free Quote</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Addy Power Wash</h4>
+        <p>Professional pressure washing services dedicated to making your property look its absolute best. Fully insured and locally owned.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">House Washing</a></li>
+          <li><a href="#services">Driveway Cleaning</a></li>
+          <li><a href="#services">Deck &amp; Patio</a></li>
+          <li><a href="#services">Roof Cleaning</a></li>
+          <li><a href="#services">Commercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li>Email: info@addypowerwash.com</li>
+          <li>Serving your local area</li>
+          <li><a href="#contact">Get a Free Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Addy Power Wash. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Before/After Slider
+    document.querySelectorAll('[data-slider]').forEach(function(slider) {
+      var before = slider.querySelector('.ba-before');
+      var divider = slider.querySelector('.ba-divider');
+      var handle = slider.querySelector('.ba-handle');
+      var isDragging = false;
+
+      function updateSlider(x) {
+        var rect = slider.getBoundingClientRect();
+        var pos = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+        var pct = pos * 100;
+        before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        divider.style.left = pct + '%';
+        handle.style.left = pct + '%';
+      }
+
+      slider.addEventListener('mousedown', function(e) { isDragging = true; updateSlider(e.clientX); });
+      window.addEventListener('mousemove', function(e) { if (isDragging) updateSlider(e.clientX); });
+      window.addEventListener('mouseup', function() { isDragging = false; });
+
+      slider.addEventListener('touchstart', function(e) { isDragging = true; updateSlider(e.touches[0].clientX); }, {passive: true});
+      window.addEventListener('touchmove', function(e) { if (isDragging) updateSlider(e.touches[0].clientX); }, {passive: true});
+      window.addEventListener('touchend', function() { isDragging = false; });
+    });
+
+    // Scroll Animations
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
