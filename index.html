@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Addy Power Wash | Utica, NY</title>
+    <title>Addy Power Wash | Clean & Shine</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bubble-blue: #00d2ff;
             --deep-blue: #004e92;
             --sunny-yellow: #ffde00;
+            --cartoon-black: #222;
         }
 
         body {
@@ -19,11 +20,12 @@
             color: #333;
         }
 
+        /* Hero Section */
         .hero {
             background: linear-gradient(180deg, var(--deep-blue) 0%, var(--bubble-blue) 100%);
             padding: 60px 20px;
             text-align: center;
-            border-bottom: 8px solid #222;
+            border-bottom: 8px solid var(--cartoon-black);
         }
 
         .logo-img {
@@ -39,19 +41,21 @@
             font-family: 'Fredoka One', cursive;
             color: white;
             font-size: 3rem;
-            text-shadow: 4px 4px 0px #222;
+            text-shadow: 4px 4px 0px var(--cartoon-black);
             margin-top: 20px;
         }
 
+        /* Layout Container */
         .container {
             max-width: 900px;
             margin: -40px auto 40px;
             padding: 0 20px;
         }
 
+        /* Bubble Panels */
         .panel {
             background: white;
-            border: 5px solid #222;
+            border: 5px solid var(--cartoon-black);
             border-radius: 40px;
             padding: 30px;
             margin-bottom: 30px;
@@ -83,6 +87,7 @@
             left: 0;
         }
 
+        /* Big Red Cartoon Button */
         .btn {
             display: inline-block;
             background: #ff4757;
@@ -91,10 +96,23 @@
             font-family: 'Fredoka One', cursive;
             text-decoration: none;
             font-size: 1.5rem;
-            border: 5px solid #222;
+            border: 5px solid var(--cartoon-black);
             border-radius: 50px;
-            box-shadow: 6px 6px 0px #222;
+            box-shadow: 6px 6px 0px var(--cartoon-black);
             transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0px var(--cartoon-black);
+        }
+
+        .location-badge {
+            background-color: var(--sunny-yellow);
+            text-align: center;
+            padding: 15px;
+            border-radius: 50px;
+            border: 5px solid var(--cartoon-black);
         }
     </style>
 </head>
@@ -123,9 +141,9 @@
             <a href="mailto:contact@addypowerwash.com" class="btn">Get a Quote!</a>
         </div>
 
-        <div class="panel" style="text-align: center; background-color: #ffde00; border-radius: 50px;">
+        <div class="location-badge">
             <h3 style="margin:0; font-family: 'Fredoka One', cursive; color: #222;">
-                📍 Proudly Serving Utica, NY & Surrounding Areas
+                📍 Serving Utica, NY & Surrounding Areas
             </h3>
         </div>
     </div>
